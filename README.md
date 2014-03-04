@@ -11,5 +11,5 @@ node-goban
  * node server
  * express for web
  * ~~https://github.com/curious-attempt-bunny/node-sgf for parsing sgf-files~~
- * jison for parsing sgf-files
+ * https://github.com/akira-cn/node-sgf for parsing sgf-files
  * results may vary
