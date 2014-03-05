@@ -5,8 +5,6 @@
 
 var express = require('express');
 var routes = require('./routes');
-var sgf = require('./lib/sgf.js');
-console.log(sgf);
 var http = require('http');
 var path = require('path');
 
@@ -19,7 +17,8 @@ app.set('view engine', 'ejs');
 //app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
-app.use(express.bodyParser());
+app.use(express.urlencoded());
+app.use(express.multipart( {defer:true} ));
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
