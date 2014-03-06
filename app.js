@@ -19,6 +19,8 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.multipart( {defer:true} ));
+app.use(express.cookieParser('manysecret'));
+app.use(express.cookieSession()); 
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));

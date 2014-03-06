@@ -5,14 +5,15 @@ module.exports = function attachHandlers(server) {
 
 var handleUpload = function(req, res) {
   var sgf = require('../../lib/sgf.js');
-  var util = require('util');
   req.form.on('part', function(part) {
     var data = "";
     part.on('data', function(chunk) {
       data += chunk;
     });
     part.on('end', function() {
-      res.json(sgf.toJSON(data));
+//      res.json(sgf.toJSON(data));
+      req.session.gameTree = sgf.toJSON(data);
+      res.redirect('/show');
     });
   });
 }
