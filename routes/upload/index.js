@@ -12,7 +12,7 @@ var handleUpload = function(req, res) {
     });
     part.on('end', function() {
 //      res.json(sgf.toJSON(data));
-      req.session.gameTree = sgf.toJSON(data);
+      req.session.gameData = sgf.toJSON(data);
       res.redirect('/show');
     });
   });

@@ -3,7 +3,6 @@ module.exports = function attachHandlers(server) {
 }
 
 var show = function(req, res) {
-  var gameTree = req.session.gameTree;
-  console.log(gameTree);
-  res.render('show', {gameTree: gameTree});
+  var gameData = req.session.gameData;
+  res.render('show', {gameData: gameData});
 }
