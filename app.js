@@ -22,7 +22,7 @@ app.use(express.multipart( {defer:true} ));
 app.use(express.cookieParser('manysecret'));
 app.use(express.cookieSession()); 
 app.use(app.router);
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
+//app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only

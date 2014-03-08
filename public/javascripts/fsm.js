@@ -6,14 +6,20 @@ var make_fsm = function(initial_data, controller) {
       move = 0, //move number
       turn = 0; //players turn
       
-  //process initial tree
-  makeMove.apply(this, initial_data.tree.slice(1, initial_data.tree.length));
 
   var makeMove = function(sgf_elem) {
     move += 1;
     turn ^= 1;
-    game_tree.append(sgf_elem);
+    game_tree.concat(sgf_elem);
   }
+
+  var forward = function() {
+    move +=1;
+    turn ^= 1;
+  }
+
+  //process initial tree
+  makeMove.apply(this, initial_data.tree.slice(1, initial_data.tree.length));
 }
 
 

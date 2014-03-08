@@ -1,18 +1,26 @@
 <html>
   <head>
-    <script src="/javascripts/board.js"></script>
     <script src="/javascripts/jquery-2.1.0.js"></script>
+    <script src="/javascripts/fsm.js"></script>
+    <script src="/javascripts/board.js"></script>
+    <script src="/javascripts/board_controller.js"></script>
     <style>
       .goban { border: 1px solid black; }
       .goban-cell { border: 1px solid black; 
                     width: 30px;
                     height: 30px;}
+      .goban-cell #black { background: black; }
+      .goban-cell #white { background: white; }
+      .goban { background: url('/images/wood.jpg') repeat;
+               padding: 15px; }
     </style>
   </head>
   <body>
     <div id="players">
       <p><%= gameData.meta.players.white.name %> <%= gameData.meta.players.white.rank %></p>
       <p><%= gameData.meta.players.black.name %> <%= gameData.meta.players.black.rank %></p>
+    </div>
+    <div id="board_container">
     </div>
   </body>
 </html>

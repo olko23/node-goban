@@ -13,7 +13,6 @@ var make_board = function(gobanController, size) {
   var gobanController = gobanController;
   var table = document.createElement('table');
   table.className = "goban";
-  container.appendChild(table);
 
   var letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -32,6 +31,6 @@ var make_board = function(gobanController, size) {
     table.childNodes[pos.y].childNodes[pos.x].add_class(color);
   }
 
-  return {"goban": table };
+  return table;
 }
 
