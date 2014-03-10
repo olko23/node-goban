@@ -1,9 +1,6 @@
-<html>
+<html data-ng-app="gobanApp">
   <head>
     <script src="/javascripts/jquery-2.1.0.js"></script>
-    <script src="/javascripts/fsm.js"></script>
-    <script src="/javascripts/board.js"></script>
-    <script src="/javascripts/board_controller.js"></script>
     <style>
       .goban { border: 1px solid black; }
       .goban-cell { border: 1px solid black; 
@@ -20,7 +17,10 @@
       <p><%= gameData.meta.players.white.name %> <%= gameData.meta.players.white.rank %></p>
       <p><%= gameData.meta.players.black.name %> <%= gameData.meta.players.black.rank %></p>
     </div>
-    <div id="board_container">
+    <div id="goban-container" data-ng-controller="gobanController">
     </div>
+  <script src="/javascripts/angular.js"></script>
+  <script src="/javascripts/angular-sanitize.js"></script>
+  <script src="/javascripts/gobanApp.js"></script>
   </body>
 </html>

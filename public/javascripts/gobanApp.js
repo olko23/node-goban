@@ -21,17 +21,16 @@ var make_cell = function(id) {
   return cell;
 }
 
-var make_board = function(gobanController, size) {
-  var gobanController = gobanController;
+var makeGobanElem = function(size) {
   var table = document.createElement('table');
   table.className = "goban";
 
   var letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
   // make cells
-  for(j = 0; j < size.y; j++){
+  for(j = 0; j < size; j++){
     var tr = document.createElement('tr');
-    for(i = 0; i < size.y; i++){
+    for(i = 0; i < size; i++){
       var td = make_cell(letters.charAt(i)+letters.charAt(j));
       td.onclick = function(event) {
         var moveEvent = new Event('goban-click', {bubbles:true});
@@ -41,11 +40,31 @@ var make_board = function(gobanController, size) {
     }
     table.appendChild(tr);
   }
-
-  var place_stone = function(color, pos) {
-    table.childNodes[pos.y].childNodes[pos.x].add_class(color);
-  }
-
   return table;
 }
 
+var gobanApp = angular.module('gobanApp', ['ngSanitize']);
+var controllers = {};
+
+controllers.gobanController = function($scope, $http) {
+  var gobanState = {B: [], W: []};
+  $http.get('/getJson').success(function(data) {
+    var makeState = function(sgfElement) {
+      if(sgfElement.B) {
+        gobanState.B.push(sgfElement.B[0]);
+        this.dispatchEvent(new CustomEvent('putStone', {detail: {id:sgfElement.B[0], color:'black'}}));
+      }
+      if(sgfElement.W) {
+        gobanState.W.push(sgfElement.W[0]);
+      }
+    };
+    data.tree.slice(1).forEach(makeState);
+    console.log(gobanState);
+
+    $scope.sgfData = data;
+    console.log(data);
+      
+  });
+}
+
+gobanApp.controller(controllers);

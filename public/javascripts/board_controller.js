@@ -5,8 +5,8 @@ var boardController = function(container, initial_data) {
       self = this;
 
   fsm = make_fsm(initial_data, self);
+  this.addEventListener('goban-click', function(evt) { console.log(evt.srcElement.id); console.log(evt); });
   board = make_board(self, {x:initial_data.meta.board.size, y:initial_data.meta.board.size});
-  console.log(container);
   container.appendChild(board);
 }
 

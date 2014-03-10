@@ -6,6 +6,7 @@ var make_fsm = function(initial_data, controller) {
       move = 0, //move number
       turn = 0; //players turn
       
+      console.log(this);
 
   var makeMove = function(sgf_elem) {
     move += 1;
